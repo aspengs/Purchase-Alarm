@@ -1,17 +1,28 @@
 {
-    "name": "purchase-alarm",
-    "version": "1.0.0",
-    "scripts": {
-      "client": "cd client && yarn start",
-      "start": "node server.js",
-      "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-      "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
-    },
-    "dependencies": {
-      "body-parser": "^1.18.3",
-      "express": "^4.16.4"
-    },
-    "devDependencies": {
-      "concurrently": "^4.0.1"
-    }
+  "name": "purchase-alarm",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "aspen": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn watch-node\" \"yarn client\""
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.3.1",
+    "@types/morgan": "^1.7.35",
+    "mongoose": "^5.3.14",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.3.0"
   }
+}
