@@ -1,18 +1,18 @@
-import {Request, Response} from "express";
-import {CartController} from '../controllers/alarmController'
+import { Request, Response } from "express";
+import { CartController } from '../controllers/alarmController'
 
-export class Routes {    
+export class Routes {
 
     public alarmController: CartController = new CartController();
-    
-    public routes(app:any): void {   
-        
+
+    public routes(app: any): void {
+
         app.route('/')
-        .get((req: Request, res: Response) => {            
-            res.status(200).send({
-                message: 'API routes'
+            .get((req: Request, res: Response) => {
+                res.status(200).send({
+                    message: 'API routes'
+                })
             })
-        })
 
         app.route('/api/world').post(this.alarmController.cart);
 
@@ -21,13 +21,13 @@ export class Routes {
         });
 
         app.route('/alarm')
-        .get(this.alarmController.getAlarm)
-        .post(this.alarmController.addNewAlarm);
-        
+            .get(this.alarmController.getAlarms)
+            .post(this.alarmController.addNewAlarm);
+
         app.route('/alarm/:alarmId')
-        .get(this.alarmController.getAlarmWithID)
-        .put(this.alarmController.updateAlarm)
-        .delete(this.alarmController.deleteAlarm)
+            .get(this.alarmController.getAlarmWithID)
+            .put(this.alarmController.updateAlarm)
+            .delete(this.alarmController.deleteAlarm)
 
     }
 }
