@@ -1,11 +1,7 @@
-.App {
-  text-align: center;
+body {
+  background-color: #fbfbfd;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
 
 .App-header {
   min-height: 50%;
@@ -24,11 +20,50 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/**/
+.headerGarba {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebarGarba {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0;
+
+}
+.sidebar-sticky-garba {
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.sidebar-sticky-garba  form{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tableGarba {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
+  -moz-box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
+  margin-top: 50px;
+}
+
+.tableGarba .table thead th {
+  border: 0;
+  padding: 1.95rem .75rem;
 }

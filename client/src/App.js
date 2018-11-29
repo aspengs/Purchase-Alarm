@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import AlarmForm from './components/alarmForm'
+import Header from './header';
+import AlarmForm from './components/alarmForm';
+import Table from './components/table';
 class App extends Component {
   state = {
     response: '',
@@ -34,24 +35,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-
-          <AlarmForm />
-
-          <p>{this.state.response}</p>
-          <form onSubmit={this.handleSubmit}>
-            <p>
-              <strong>Post to Server:</strong>
-            </p>
-            <input
-              type="text"
-              value={this.state.post}
-              onChange={e => this.setState({ post: e.target.value })}
-            />
-            <button type="submit">Submit</button>
-          </form>
-          <p>{this.state.responseToPost}</p>
-        </header>
+         <Header />
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-2 d-none d-md-block bg-light sidebarGarba text-left">
+              <AlarmForm />
+            </div>
+            <div className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+              <Table />
+            </div>
+          </div>
+        </div>
+         
 
       </div>
     );
