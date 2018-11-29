@@ -7,6 +7,7 @@ import { AlarmSchema } from '../models/alarm';
 const Alarm = mongoose.model('Alarm', AlarmSchema);
 
 export class CartController{
+    
     public cart = (req: Request, res: Response) => {
         let op = new checkout.Option(1000,"garbarino")
         checkout.getCart(req.body.post, op, checkout.Include.None, false)
@@ -25,7 +26,7 @@ export class CartController{
             res.json(alarm);
         });
     }
-    public getAlarm (req: Request, res: Response) {           
+    public getAlarms (req: Request, res: Response) {           
         Alarm.find({}, (err, alarm) => {
             if(err){
                 res.send(err);

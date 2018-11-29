@@ -21,7 +21,7 @@ export class Routes {
         });
 
         app.route('/alarm')
-        .get(this.alarmController.getAlarm)
+        .get(this.alarmController.getAlarms)
         .post(this.alarmController.addNewAlarm);
         
         app.route('/alarm/:alarmId')
