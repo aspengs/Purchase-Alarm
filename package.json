@@ -9,7 +9,7 @@
     "watch-node": "nodemon dist/server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "aspen": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn watch-node\" \"yarn client\""
+    "all": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn watch-node\" \"yarn client\""
   },
   "dependencies": {
     "@types/mongoose": "^5.3.1",
