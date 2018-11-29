@@ -2,9 +2,7 @@
 /node_modules
 /.pnp
 
-
 # testing
-
 
 # production
 /build
