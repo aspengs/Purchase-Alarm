@@ -4,12 +4,13 @@ import { Routes } from "./routes/routes";
 import path = require('path');
 import morgan = require('morgan');
 import * as mongoose from "mongoose";
+let config = require('../config/config');
 
 class App {
 
   public app: express.Application;
   public routePrv: Routes = new Routes();
-  public mongoUrl: string = 'mongodb://localhost/db';
+  public mongoUrl: string = config.database.url;
 
   constructor() {
     this.app = express();
@@ -19,27 +20,28 @@ class App {
   }
 
   private config(): void {
-    this.app.use(morgan('combined'))
+    
     this.app.set("port", process.env.PORT || 5000);
+    //log all requests
+    this.app.use(morgan('combined'))
     // support application/json type post data
     this.app.use(bodyParser.json());
     //support application/x-www-form-urlencoded post data
     this.app.use(bodyParser.urlencoded({ extended: false }));
 
-    if (process.env.NODE_ENV === 'production') {
-      // Serve any static files
-      this.app.use(express.static(path.join(__dirname, 'client/build')));
-      // Handle React routing, return all requests to React app
-      this.app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-      });
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   // Serve any static files
+    //   this.app.use(express.static(path.join(__dirname, 'client/build')));
+    //   // Handle React routing, return all requests to React app
+    //   this.app.get('*', function (req, res) {
+    //     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    //   });
+    // }
   }
   private mongoSetup(): void {
-    mongoose.Promise = global.Promise;
-    mongoose.connect(this.mongoUrl);
+    // mongoose.Promise = global.Promise;
+    mongoose.connect(this.mongoUrl, { useNewUrlParser: true });
   }
-
 }
 
 export default new App().app;

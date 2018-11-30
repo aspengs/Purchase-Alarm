@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",
-    "start": "node server.js",
+    "start": "node dist/server.js",
     "server": "nodemon server.js",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon dist/server.js",
