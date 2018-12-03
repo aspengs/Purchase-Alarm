@@ -13,7 +13,6 @@ export const brandFormProps = {
         brand: { type: "string", title: "Brand", default: "" }
       }
     };
-
     if (!object) {
       return <Form schema={schema} onSubmit={this.form_submit.bind(this)} />;
     } else {
@@ -26,6 +25,7 @@ export const brandFormProps = {
       );
     }
   },
+
   get_queryset(page_number, list_per_page, queryset) {
     alarmSDK.getBrand(list_per_page, page_number).then(data => {
       if (data) {
@@ -36,6 +36,7 @@ export const brandFormProps = {
     });
     return queryset;
   },
+
   form_submit(form) {
     let brand = form.formData;
     if (form.edit) {
@@ -48,6 +49,7 @@ export const brandFormProps = {
       this.response_add();
     }
   },
+
   onClickDelete(selected_objects) {
     for (let object of selected_objects.items) {
       alarmSDK.deleteBrand(object._id);

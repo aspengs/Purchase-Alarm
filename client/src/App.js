@@ -1,56 +1,38 @@
 import React, { Component } from "react";
-import "./App.css";
-// import AlarmForm from "./components/alarmForm";
-// import Example from "./admin/example";
+// import "./App.css";
+import AdminForm from "./components/adminForm";
+import { brandFormProps } from "./components/BrandFormProps";
+
 class App extends Component {
-  state = {
-    response: "",
-    post: "",
-    responseToPost: ""
-  };
-  componentDidMount() {
-    // this.callApi()
-    //   .then(res => this.setState({ response: res.express }))
-    //   .catch(err => console.log(err));
-  }
-  // callApi = async () => {
-  //   const response = await fetch("/api/hello");
-  //   const body = await response.json();
-  //   if (response.status !== 200) throw Error(body.message);
-  //   return body;
-  // };
-  handleSubmit = async e => {
-    // e.preventDefault();
-    // const response = await fetch("/api/world", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({ post: this.state.post })
-    // });
-    // const body = await response.text();
-    // this.setState({ responseToPost: body });
-  };
+  state = {};
+  componentDidMount() {}
+  handleSubmit = async e => {};
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {/* <AlarmForm /> */}
-          <p>{this.state.response}</p>
-          <form onSubmit={this.handleSubmit}>
-            <p>
-              <strong>Post to Server:</strong>
-            </p>
-            <input
-              type="text"
-              value={this.state.post}
-              onChange={e => this.setState({ post: e.target.value })}
-            />
-            <button type="submit">Submit</button>
-          </form>
-          <p>{this.state.responseToPost}</p>
-        </header>
-        <header className="App-header">{/* <Example /> */}</header>
+        {/* <header className="App-header"></header> */}
+        <AdminForm
+          get_queryset={brandFormProps.get_queryset}
+          form_submit={brandFormProps.form_submit}
+          get_form={brandFormProps.get_form}
+          onClickDelete={brandFormProps.onClickDelete}
+          list_per_page={10}
+          name={"Brand"}
+          name_plural={"Brands"}
+          list_display={["_id", "brand"]}
+          list_display_links={["brand"]}
+        />
+        <AdminForm
+          get_queryset={brandFormProps.get_queryset}
+          form_submit={brandFormProps.form_submit}
+          get_form={brandFormProps.get_form}
+          onClickDelete={brandFormProps.onClickDelete}
+          list_per_page={10}
+          name={"Brand"}
+          name_plural={"Brands"}
+          list_display={["_id", "brand"]}
+          list_display_links={["brand"]}
+        />
       </div>
     );
   }

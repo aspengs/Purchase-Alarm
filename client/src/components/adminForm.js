@@ -1,8 +1,6 @@
 import React from "react";
 import Admin from "react-crud-admin";
-// import Form from "react-jsonschema-form";
 import "../../node_modules/react-crud-admin/public/main.css";
-// import * as alarmSDK from "../client/alarmSDK";
 
 export default class AdminForm extends Admin {
   constructor(props) {
