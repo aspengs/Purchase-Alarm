@@ -2,10 +2,13 @@ import React from "react";
 import Admin from "react-crud-admin";
 import Form from "react-jsonschema-form";
 import "../../node_modules/react-crud-admin/public/main.css";
+import * as alarmSDK from "../client/alarmSDK";
 
 export default class Example extends Admin {
   constructor() {
     super();
+    this.state.current = {};
+    this.state.list_per_page = 10;
     this.name = "Brand";
     this.name_plural = "Brands";
     this.list_display_links = ["brand"];
@@ -13,16 +16,14 @@ export default class Example extends Admin {
   }
 
   get_queryset(page_number, list_per_page, queryset) {
-    fetch("/brand?limit=" + list_per_page + "&page=" + page_number)
-      .then(response => response.json())
-      .then(data => {
-        if (data) {
-          console.log(data.docs);
-          this.data = data.docs;
-          this.set_queryset(data.docs);
-          this.set_total(data.total);
-        }
-      });
+    alarmSDK.getBrand(list_per_page, page_number).then(data => {
+      if (data) {
+        this.setState({ current: data.docs });
+        this.data = data.docs;
+        this.set_queryset(data.docs);
+        this.set_total(data.total);
+      }
+    });
     return queryset;
   }
 
@@ -38,33 +39,47 @@ export default class Example extends Admin {
     };
 
     if (!object) {
-      return <Form schema={schema} />;
+      return <Form schema={schema} onSubmit={this.form_submit.bind(this)} />;
     } else {
-      return <Form schema={schema} formData={object} />;
+      return (
+        <Form
+          schema={schema}
+          formData={object}
+          onSubmit={this.form_submit.bind(this)}
+        />
+      );
     }
   }
-  // get_actions() {
-  //   return {
-  //     delete: selected_objects => {
-  //       let total = this.data.length;
-  //       for (let object of selected_objects) {
-  //         this.data.splice(this.data.indexOf(object), 1);
-  //       }
-  //       this.set_queryset(this.data);
-  //       this.set_total(total - selected_objects.length);
-  //     }
-  //   };
-  // }
+
+  form_submit(form) {
+    let brand = form.formData;
+    if (form.edit) {
+      alarmSDK.updateBrand(brand._id, brand);
+      this.response_change(); //esa magia te manda a la list
+    } else {
+      alarmSDK.createBrand(brand);
+      this.state.queryset.push(brand);
+      this.response_add();
+    }
+  }
+  get_actions() {
+    return {
+      delete: selected_objects => {
+        for (let object of selected_objects) {
+          alarmSDK.deleteBrand(object._id);
+        }
+      }
+    };
+  }
+
   render_list_view() {
     return (
       <div>
         {this.render_add_button()}
         {this.render_below_add_button()}
         {/* {this.render_search_field()}
-            {this.render_below_search_field()}
-            {this.render_actions()}
-                {this.render_below_actions()}
-            {this.render_filters()}
+            {this.render_below_search_field()} */}
+        {/* {this.render_filters()}
             {this.render_below_filters()} */}
         {this.render_table()}
         {this.render_below_table()}
@@ -73,5 +88,50 @@ export default class Example extends Admin {
         {this.render_pagination()}
       </div>
     );
+  }
+
+  render_change_page() {
+    return (
+      <div>
+        {this.render_above_change_view()}
+        {this.render_change_view()}
+        {this.render_below_change_view()}
+      </div>
+    );
+  }
+
+  render_below_add_button() {
+    return (
+      <div>
+        <button
+          onClick={this.onClickDelete.bind(this, this.state.selected_objects)}
+          className="ra-add-button"
+        >
+          Delete Brand
+        </button>
+      </div>
+    );
+  }
+
+  render_below_change_view() {
+    return (
+      <div>
+        <button onClick={this.onckickBack.bind(this)} className="ra-add-button">
+          Back
+        </button>
+      </div>
+    );
+  }
+
+  onClickDelete(selected_objects) {
+    for (let object of selected_objects.items) {
+      alarmSDK.deleteBrand(object._id);
+      console.log(object._id);
+    }
+    this.get_queryset(this.state.page_number, this.state.list_per_page, null);
+  }
+
+  onckickBack() {
+    this.setState({ display_type: "list" });
   }
 }

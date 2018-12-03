@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react": "^16.7.11",
+    "@types/react-dom": "^16.0.11",
     "react": "^16.6.3",
     "react-crud-admin": "^1.0.40",
     "react-dom": "^16.6.3",

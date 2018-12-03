@@ -28,7 +28,6 @@ export class Routes {
     app
       .route("/brand")
       .get(brandController.getBrands)
-      // .get(brandController.getNBrands)
       .post(brandController.addNewBrand);
 
     app

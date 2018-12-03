@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import AlarmForm from "./components/alarmForm";
-import Example from "./admin/example";
+// import AlarmForm from "./components/alarmForm";
+// import Example from "./admin/example";
 class App extends Component {
   state = {
     response: "",

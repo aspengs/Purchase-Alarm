@@ -24,7 +24,7 @@ class App {
   private config(): void {
     this.app.set("port", process.env.PORT || 5000);
     //log all requests
-    this.app.use(morgan("dev"));
+    this.app.use(morgan("common"));
     // support application/json type post data
     this.app.use(bodyParser.json());
     //support application/x-www-form-urlencoded post data

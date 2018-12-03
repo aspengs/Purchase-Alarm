@@ -62,7 +62,7 @@ class CartController {
     );
   }
   public deleteBrand(req: Request, res: Response) {
-    Brand.remove({ _id: req.params.brandId }, err => {
+    Brand.deleteOne({ _id: req.params.brandId }, err => {
       if (err) {
         res.send(err);
       }
