@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import * as express from "express";
 import alarmController from "../controllers/alarmController";
 import brandController from "../controllers/brandController";
+import platformController from "../controllers/platformController";
 import path = require("path");
 
 export class Routes {
@@ -25,6 +26,7 @@ export class Routes {
       .get(alarmController.getAlarmWithID)
       .put(alarmController.updateAlarm)
       .delete(alarmController.deleteAlarm);
+
     app
       .route("/brand")
       .get(brandController.getBrands)
@@ -35,5 +37,16 @@ export class Routes {
       .get(brandController.getBrandWithID)
       .put(brandController.updateBrand)
       .delete(brandController.deleteBrand);
+
+    app
+      .route("/platform")
+      .get(platformController.getPlatforms)
+      .post(platformController.addNewPlatform);
+
+    app
+      .route("/platform/:platformId")
+      .get(platformController.getPlatformWithID)
+      .put(platformController.updatePlatform)
+      .delete(platformController.deletePlatform);
   }
 }

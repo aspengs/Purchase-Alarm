@@ -5,17 +5,12 @@ class CartController {
   public addNewBrand(req: Request, res: Response) {
     let newBrand = new Brand(req.body);
 
-    newBrand.save((err, brand) => {
+    newBrand.save((err: any, brand: any) => {
       if (err) {
         res.send(err);
       }
       res.json(brand);
     });
-  }
-  public getNBrands(req: Request, res: Response) {
-    Brand.find()
-      .skip(req.params.skip)
-      .limit(req.params.limit);
   }
 
   public getBrands(req: Request, res: Response) {
@@ -23,7 +18,7 @@ class CartController {
       Brand.paginate(
         {},
         { page: parseInt(req.query.page), limit: parseInt(req.query.limit) },
-        (err, brand) => {
+        (err: any, brand: any) => {
           if (err) {
             res.send(err);
           }
@@ -31,7 +26,7 @@ class CartController {
         }
       );
     } else {
-      Brand.find({}, (err, brand) => {
+      Brand.find({}, (err: any, brand: any) => {
         if (err) {
           res.send(err);
         }
@@ -41,7 +36,7 @@ class CartController {
   }
 
   public getBrandWithID(req: Request, res: Response) {
-    Brand.findById(req.params.brandId, (err, brand) => {
+    Brand.findById(req.params.brandId, (err: any, brand: any) => {
       if (err) {
         res.send(err);
       }
@@ -53,7 +48,7 @@ class CartController {
       { _id: req.params.brandId },
       req.body,
       { new: true },
-      (err, brand) => {
+      (err: any, brand: any) => {
         if (err) {
           res.send(err);
         }
@@ -62,7 +57,7 @@ class CartController {
     );
   }
   public deleteBrand(req: Request, res: Response) {
-    Brand.deleteOne({ _id: req.params.brandId }, err => {
+    Brand.deleteOne({ _id: req.params.brandId }, (err: any) => {
       if (err) {
         res.send(err);
       }

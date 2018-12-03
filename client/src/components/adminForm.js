@@ -5,22 +5,20 @@ import "../../node_modules/react-crud-admin/public/main.css";
 export default class AdminForm extends Admin {
   constructor(props) {
     super(props);
-    this.state.list_per_page = this.props.list_per_page;
-    this.get_queryset = this.props.get_queryset;
-    this.onClickDelete = this.props.onClickDelete;
+    this.name = props.custom.name;
+    this.name_plural = props.custom.name_plural;
+    this.list_display = props.custom.list_display;
+    this.list_display_links = props.custom.list_display_links;
+    this.state.list_per_page = props.custom.list_per_page;
+    this.get_form = props.custom.get_form;
+    this.form_submit = props.custom.form_submit;
+    this.get_queryset = props.custom.get_queryset;
+    this.onClickDelete = props.custom.onClickDelete;
   }
-  // get_actions() {
-  //   return {
-  //     delete: selected_objects => {
-  //       for (let object of selected_objects) {
-  //         alarmSDK.deleteBrand(object._id);
-  //       }
-  //     }
-  //   };
-  // }
+
   render_list_view() {
     return (
-      <div>
+      <div className="AdminForm">
         {this.render_add_button()}
         {this.render_below_add_button()}
         {/* {this.render_search_field()}
@@ -46,14 +44,12 @@ export default class AdminForm extends Admin {
   }
   render_below_add_button() {
     return (
-      <div>
-        <button
-          onClick={this.onClickDelete.bind(this, this.state.selected_objects)}
-          className="ra-add-button"
-        >
-          Delete Brand
-        </button>
-      </div>
+      <button
+        onClick={this.onClickDelete.bind(this, this.state.selected_objects)}
+        className="ra-add-button"
+      >
+        Delete Brand
+      </button>
     );
   }
   render_below_change_view() {
