@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header';
 import AlarmForm from './components/alarmForm';
+import InfoFilter from './components/infoFilter';
 import Table from './components/table';
 class App extends Component {
   state = {
@@ -42,6 +43,7 @@ class App extends Component {
               <AlarmForm />
             </div>
             <div className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+              <InfoFilter/>
               <Table />
             </div>
           </div>
