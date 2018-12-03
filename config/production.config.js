@@ -15,7 +15,9 @@ module.exports = (ROOT_PATH, timeoutRatio) => {
       }
     },
     database:{
-      url : "mongodb://localhost/db"
+      url : "mongodb://purchase-user:purch453-db-u53r@ds241493.mlab.com:41493/purchase-alarm",
+      pass : "purch453-db-u53r",
+      user : "purchase-user"
     }
   };
   return config;

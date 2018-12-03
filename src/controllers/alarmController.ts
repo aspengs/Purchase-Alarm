@@ -1,21 +1,12 @@
 import { Request, Response } from 'express';
-import * as checkout from '../apis/checkout';
+import * as checkout from '../client/checkoutSDK';
 import * as mongoose from 'mongoose';
 import { AlarmSchema } from '../models/alarm';
 
-
 const Alarm = mongoose.model('Alarm', AlarmSchema);
 
-export class CartController {
+class CartController {
 
-    public cart = (req: Request, res: Response) => {
-        let op = new checkout.Option(1000, "garbarino")
-        checkout.getCart(req.body.post, op, checkout.Include.None, false)
-            .then((res: any) => res.text())
-            .then((body: any) => {
-                res.send(body);
-            });
-    }
     public addNewAlarm(req: Request, res: Response) {
         let newAlarm = new Alarm(req.body);
 
@@ -58,8 +49,16 @@ export class CartController {
             res.json({ message: 'Successfully deleted alarm!' });
         });
     }
-
+    public cart = (req: Request, res: Response) => {
+        let op = new checkout.Option(1000, "garbarino")
+        checkout.getCart(req.body.post, op, checkout.Include.None, false)
+            .then((res: any) => res.text())
+            .then((body: any) => {
+                res.send(body);
+            });
+    }
 }
+export default new CartController();
 
 
 

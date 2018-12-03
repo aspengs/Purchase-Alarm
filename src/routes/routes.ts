@@ -1,33 +1,29 @@
 import { Request, Response } from "express";
-import { CartController } from '../controllers/alarmController'
+import * as express from "express";
+import  alarmController  from '../controllers/alarmController'
+import path = require('path');
 
 export class Routes {
 
-    public alarmController: CartController = new CartController();
-
     public routes(app: any): void {
 
-        app.route('/')
-            .get((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: 'API routes'
-                })
-            })
-
-        app.route('/api/world').post(this.alarmController.cart);
-
-        app.route('/api/hello').get((req: Request, res: Response) => {
-            res.send({ express: 'Hello From Express' });
-        });
+        if (process.env.NODE_ENV === 'production') {
+            // Serve any static files
+            app.use(express.static(path.join(__dirname, '../../client/build')));
+            // Handle React routing, return all requests to React app
+            app.route('*').get(function (req: Request, res: Response)  {
+              res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+            });
+          }
 
         app.route('/alarm')
-            .get(this.alarmController.getAlarms)
-            .post(this.alarmController.addNewAlarm);
+            .get(alarmController.getAlarms)
+            .post(alarmController.addNewAlarm);
 
         app.route('/alarm/:alarmId')
-            .get(this.alarmController.getAlarmWithID)
-            .put(this.alarmController.updateAlarm)
-            .delete(this.alarmController.deleteAlarm)
+            .get(alarmController.getAlarmWithID)
+            .put(alarmController.updateAlarm)
+            .delete(alarmController.deleteAlarm)
 
     }
 }
