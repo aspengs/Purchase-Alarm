@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './header';
-import AlarmForm from './components/alarmForm';
+import NavBar from './components/navBar';
 import InfoFilter from './components/infoFilter';
 import Table from './components/table';
 class App extends Component {
@@ -40,7 +40,7 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-2 d-none d-md-block bg-light sidebarGarba text-left">
-              <AlarmForm />
+              <NavBar />
             </div>
             <div className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
               <InfoFilter/>

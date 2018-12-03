@@ -22,11 +22,10 @@ body {
 
 /**/
 .headerGarba {
-  background-color: #fff;
+  background-color: #232535;
   position: sticky;
   top: 0;
   z-index: 1020;
-  border-bottom: 1px solid #ddd;
 }
 .headerGarba .navbar{
   padding: 1.4rem 1rem;
@@ -44,16 +43,37 @@ body {
   position: sticky;
   top: 48px;
   height: calc(100vh - 48px);
-  padding-top: 2.9rem;
+  padding-top: 1.7rem;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: #2b2f50;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 .sidebar-sticky-garba  form{
   padding-left: 10px;
   padding-right: 10px;
 }
+/*sidebar-sticky-garba*/
+.sidebar-sticky-garba .nav-garba {
+  padding-left: 0;
+}
+.sidebar-sticky-garba .nav-garba li {
+  border-left: 2px solid #2b2f50;
+  list-style: none;
+  padding: 13px 13px 13px 8px;
+}
+.sidebar-sticky-garba .nav-garba li a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-sticky-garba .nav-garba li:hover {
+  border-left: 2px solid #03A9F4;
+  background-color: rgb(49, 53, 88);
+}
+
+
+
 .btn-alert-submit {
   width: 100%;
   background-color: #D1030F;
