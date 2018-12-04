@@ -29,10 +29,6 @@ export default class AdminForm extends Admin {
           {this.render_add_button()}
           {this.render_below_add_button()}
         </div>
-        {/* {this.render_search_field()}
-            {this.render_below_search_field()} */}
-        {/* {this.render_filters()}
-            {this.render_below_filters()} */}
         <div className="tableGarba tableAlert">
           {this.render_table()}
           {this.render_below_table()}
@@ -42,21 +38,19 @@ export default class AdminForm extends Admin {
         <div className="pagination paginationGarba">
           {this.render_pagination()}
         </div>
-        
       </div>
     );
   }
   render_change_page() {
     return (
       <div className="row">
-      <div className="box-button-edit text-right">
-        {this.render_below_change_view()}
-      </div>
-      <div className="form-box">
-        {this.render_above_change_view()}
-        {this.render_change_view()}
-       
-      </div>
+        <div className="box-button-edit text-right">
+          {this.render_below_change_view()}
+        </div>
+        <div className="form-box">
+          {this.render_above_change_view()}
+          {this.render_change_view()}
+        </div>
       </div>
     );
   }
@@ -64,8 +58,9 @@ export default class AdminForm extends Admin {
     return (
       <button
         onClick={this.onClickDelete.bind(this, this.state.selected_objects)}
-        className="ra-add-button">
-        Delete Brand
+        className="ra-add-button"
+      >
+        Delete {this.name}
       </button>
     );
   }

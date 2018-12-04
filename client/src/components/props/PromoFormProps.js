@@ -43,13 +43,13 @@ export const promoFormProps = {
   },
 
   form_submit(form) {
-    let brand = form.formData;
+    let promo = form.formData;
     if (form.edit) {
-      alarmSDK.updatePromo(brand._id, brand);
+      alarmSDK.updatePromo(promo._id, promo);
       this.response_change();
     } else {
-      alarmSDK.createPromo(brand);
-      this.state.queryset.push(brand);
+      alarmSDK.createPromo(promo);
+      this.state.queryset.push(promo);
       this.response_add();
     }
   },
