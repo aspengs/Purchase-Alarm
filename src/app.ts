@@ -4,7 +4,7 @@ import { Routes } from "./routes/routes";
 import path = require("path");
 import morgan = require("morgan");
 import * as mongoose from "mongoose";
-import { purchaseCheck5Mins } from "./jobs/alarm";
+import { purchaseCheck5Mins } from "./jobs/alarmJob";
 let config = require("../config/config");
 
 class App {

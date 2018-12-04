@@ -20,6 +20,7 @@ export const alarmFormProps = {
         platform: { type: "string", title: "platform", default: "" },
         promo: { type: "string", title: "promo", default: "" },
         source: { type: "string", title: "source", default: "" },
+        chatID: { type: "string", title: "chat Id", default: "" },
         calendar: {
           type: "object",
           title: "calendar",

@@ -1,5 +1,6 @@
 let schedule = require("node-schedule");
 const fetch = require("node-fetch");
+const TelegramBot = require("node-telegram-bot-api");
 
 import Brand from "../models/alarmBrand";
 import Promo from "../models/alarmPromo";
@@ -7,8 +8,11 @@ import Platfrom from "../models/alarmPlatform";
 import Source from "../models/alarmSource";
 import Alarm from "../models/alarm";
 
+const token = "655824168:AAH78FIQFcwHzOJmP6PDXimwqpBzctoYRkw";
+const bot = new TelegramBot(token, { polling: true });
+
 export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
-  console.log("This runs every 5 minutes");
+  console.log("Check runs every 1 minutes");
   var now = new Date();
   var options = {
     headers: {
@@ -77,9 +81,10 @@ export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
               getCurrentTolerance(alarmElement) <
               dataElement.minutesFromLastTransaction
             ) {
-              var message = console.log(dataElement);
-              // var bot = new Bot();
-              // bot.sendMessage(check.getMessage(), check.getDestinationChatID());
+              bot.sendMessage(
+                alarmElement.chatID,
+                getmessage(alarmElement, dataElement.minutesFromLastTransaction)
+              );
               return dataElement;
             }
           }
@@ -87,8 +92,16 @@ export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
       });
     });
 });
-function getmessage(alarmElement: any) {
-  // return "No hay ventas en "+ alarmElement.brand+" con medio de pago "Visa Generica" (2261) desde hace al menos {{minutos}} minutos."
+function getmessage(alarmElement: any, since: number) {
+  return (
+    "[TEST] No hay ventas en " +
+    alarmElement.brand +
+    " con medio de pago " +
+    alarmElement.promo +
+    " desde hace al menos " +
+    since +
+    " minutos."
+  );
 }
 
 function getCurrentTolerance(alarmElement: any) {
@@ -99,32 +112,3 @@ function getCurrentTolerance(alarmElement: any) {
     "A" + (now.getHours() + 1)
   ];
 }
-
-function Bot(token: any, update: any) {
-  this.token = token;
-  this.update = update;
-  this.handlers = [];
-}
-
-Bot.sendMessage = function(message: string, chatID: string) {
-  //Logger.log(message);
-
-  var payload = {
-    method: "sendMessage",
-    chat_id: chatID,
-    text: message,
-    parse_mode: "HTML"
-  };
-
-  var data = {
-    method: "post",
-    payload: payload
-  };
-
-  fetch(
-    "https://api.telegram.org/bot" +
-      "655824168:AAH78FIQFcwHzOJmP6PDXimwqpBzctoYRkw" +
-      "/",
-    data
-  );
-};
