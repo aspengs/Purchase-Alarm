@@ -41,48 +41,51 @@ class AlarmForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Platform:
-            <select value={this.state.platform.value} onChange={this.handleChange}>
-            <option value="Browser">Browser</option>
-            <option value="IOS">IOS</option>
-            <option value="Andoid">Andoid</option>
-          </select>
-        </label>
-        <label>
-          Brand:
-            <select value={this.state.brand.value} onChange={this.handleChange}>
+      <div className="sidebar-sticky-garba">
+        <form onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label>Platform: </label>
+              <select className="form-control" value={this.state.platform.value} onChange={this.handleChange}>
+              <option value="Browser">Browser</option>
+              <option value="IOS">IOS</option>
+              <option value="Andoid">Andoid</option>
+            </select>
+        </div>
+        <div className="form-group">
+          <label> Brand:</label>
+            <select className="form-control" value={this.state.brand.value} onChange={this.handleChange}>
             <option value="GARBARINO">Garbarino</option>
             <option value="COMPUMUNDO">Comumundo</option>
           </select>
-        </label>
-        <label>
-          Source:
-            <select value={this.state.source.value} onChange={this.handleChange}>
+        </div>
+        <div className="form-group">
+          <label> Source:</label>
+            <select className="form-control" value={this.state.source.value} onChange={this.handleChange}>
             <option value="WEB">Web</option>
             <option value="DIA">Dia</option>
           </select>
-        </label>
-        <label>
-          Is going:
+        </div>
+        <div class="form-check">
           <input
+            class="form-check-input"
             name="isGoing"
             type="checkbox"
             checked={this.state.isGoing}
             onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Number of guests:
+          <label>Is going:</label>
+        </div>
+        <div className="form-group">
+        <label> Number of guests: </label>
           <input
+            className="form-control"
             name="numberOfGuests"
             type="number"
             value={this.state.numberOfGuests}
             onChange={this.handleInputChange} />
-        </label>
-        <input type="submit" value="Submit" />
+        </div>
+        <input type="submit" value="Submit" className="btn btn-alert-submit" />
       </form>
+      </div>
     );
   }
 }
