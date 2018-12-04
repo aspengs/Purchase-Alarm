@@ -1,32 +1,42 @@
 import { Request, Response } from "express";
-import * as checkout from "../client/checkoutSDK";
-import * as mongoose from "mongoose";
-import { AlarmSchema } from "../models/alarm";
-
-const Alarm = mongoose.model("Alarm", AlarmSchema);
+import Alarm from "../models/alarm";
 
 class CartController {
   public addNewAlarm(req: Request, res: Response) {
     let newAlarm = new Alarm(req.body);
 
-    newAlarm.save((err, alarm) => {
+    newAlarm.save((err: any, alarm: any) => {
       if (err) {
         res.send(err);
       }
       res.json(alarm);
     });
   }
+
   public getAlarms(req: Request, res: Response) {
-    Alarm.find({}, (err, alarm) => {
-      if (err) {
-        res.send(err);
-      }
-      console.log(alarm);
-      res.json(alarm);
-    });
+    if (req.query.limit && req.query.page) {
+      Alarm.paginate(
+        {},
+        { page: parseInt(req.query.page), limit: parseInt(req.query.limit) },
+        (err: any, alarm: any) => {
+          if (err) {
+            res.send(err);
+          }
+          res.json(alarm);
+        }
+      );
+    } else {
+      Alarm.find({}, (err: any, alarm: any) => {
+        if (err) {
+          res.send(err);
+        }
+        res.json(alarm);
+      });
+    }
   }
+
   public getAlarmWithID(req: Request, res: Response) {
-    Alarm.findById(req.params.alarmId, (err, alarm) => {
+    Alarm.findById(req.params.alarmId, (err: any, alarm: any) => {
       if (err) {
         res.send(err);
       }
@@ -38,7 +48,7 @@ class CartController {
       { _id: req.params.alarmId },
       req.body,
       { new: true },
-      (err, alarm) => {
+      (err: any, alarm: any) => {
         if (err) {
           res.send(err);
         }
@@ -47,21 +57,12 @@ class CartController {
     );
   }
   public deleteAlarm(req: Request, res: Response) {
-    Alarm.remove({ _id: req.params.alarmId }, err => {
+    Alarm.deleteOne({ _id: req.params.alarmId }, (err: any) => {
       if (err) {
         res.send(err);
       }
       res.json({ message: "Successfully deleted alarm!" });
     });
   }
-  public cart = (req: Request, res: Response) => {
-    let op = new checkout.Option(1000, "garbarino");
-    checkout
-      .getCart(req.body.post, op, checkout.Include.None, false)
-      .then((res: any) => res.text())
-      .then((body: any) => {
-        res.send(body);
-      });
-  };
 }
 export default new CartController();

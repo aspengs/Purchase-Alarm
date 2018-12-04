@@ -3,6 +3,8 @@ import * as express from "express";
 import alarmController from "../controllers/alarmController";
 import brandController from "../controllers/brandController";
 import platformController from "../controllers/platformController";
+import sourceController from "../controllers/sourceController";
+import promoController from "../controllers/promoController";
 import path = require("path");
 
 export class Routes {
@@ -48,5 +50,27 @@ export class Routes {
       .get(platformController.getPlatformWithID)
       .put(platformController.updatePlatform)
       .delete(platformController.deletePlatform);
+
+    app
+      .route("/source")
+      .get(sourceController.getSources)
+      .post(sourceController.addNewSource);
+
+    app
+      .route("/source/:sourceId")
+      .get(sourceController.getSourceWithID)
+      .put(sourceController.updateSource)
+      .delete(sourceController.deleteSource);
+
+    app
+      .route("/promo")
+      .get(promoController.getPromos)
+      .post(promoController.addNewPromo);
+
+    app
+      .route("/promo/:promoId")
+      .get(promoController.getPromoWithID)
+      .put(promoController.updatePromo)
+      .delete(promoController.deletePromo);
   }
 }

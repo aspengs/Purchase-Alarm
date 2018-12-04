@@ -15,7 +15,13 @@ export default class AdminForm extends Admin {
     this.get_queryset = props.custom.get_queryset;
     this.onClickDelete = props.custom.onClickDelete;
   }
-
+  componentDidMount() {
+    this.get_queryset(
+      this.state.page_number,
+      this.list_per_page,
+      this.queryset
+    );
+  }
   render_list_view() {
     return (
       <div className="AdminForm">

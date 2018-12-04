@@ -29,8 +29,8 @@ let calendarHour = {
   A24: { type: Number }
 };
 
-export const AlarmSchema = new Schema({
-  plataform: {
+const AlarmSchema = new Schema({
+  platform: {
     type: String,
     required: "Enter a promo"
   },
@@ -71,3 +71,11 @@ export const AlarmSchema = new Schema({
     default: Date.now
   }
 });
+
+function getCurrentCalendarHour() {
+  let now = new Date();
+}
+
+AlarmSchema.plugin(require("mongoose-paginate"));
+
+export default mongoose.model("Alarm", AlarmSchema);
