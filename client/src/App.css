@@ -115,7 +115,7 @@ body {
 
 }
 .form-box {
-  width: 600px;
+  width: 750px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -143,4 +143,66 @@ body {
 .paginationGarba .pull-right{
   clear: both!important;
   width: 100%;
+}
+#root__title ~ .field-string {
+  display: inline-block;
+  width: 100px;
+  margin-right: 10px;
+}
+#root__title ~ .field-object {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
+  max-width: 702px;
+  overflow: hidden;
+}
+#root_calendar__title {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+#root_calendar__title ~ .field-object {
+  float: left;
+  width: 100px;
+  border-left: 1px solid #ccc;
+}
+#root_calendar_dom__title,
+#root_calendar_lun__title,
+#root_calendar_mar__title,
+#root_calendar_mie__title,
+#root_calendar_jue__title,
+#root_calendar_vie__title,
+#root_calendar_sab__title,
+#root_calendar_dom__title,
+#root_calendar_lun__title,
+#root_calendar_mar__title,
+#root_calendar_mie__title,
+#root_calendar_jue__title,
+#root_calendar_vie__title,
+#root_calendar_sab__title {
+  text-align: center;
+  padding-top: 15px;
+  border-bottom: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+#root_calendar_dom__title ~ .field-number,
+#root_calendar_lun__title ~ .field-number,
+#root_calendar_mar__title ~ .field-number,
+#root_calendar_mie__title ~ .field-number,
+#root_calendar_jue__title ~ .field-number,
+#root_calendar_vie__title ~ .field-number,
+#root_calendar_sab__title ~ .field-number {
+  border-top: 1px solid #ccc;
+  border-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.calendarTable .field-number {
+  display: inline-block;
+
 }

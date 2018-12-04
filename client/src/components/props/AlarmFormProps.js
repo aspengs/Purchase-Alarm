@@ -239,14 +239,16 @@ export const alarmFormProps = {
       }
     };
     if (!object) {
-      return <Form schema={schema} onSubmit={this.form_submit.bind(this)} />;
+      return <div className="calendarTable"><Form schema={schema} onSubmit={this.form_submit.bind(this)} /></div>;
     } else {
       return (
+        <div className="calendarTable">
         <Form
           schema={schema}
           formData={object}
           onSubmit={this.form_submit.bind(this)}
         />
+        </div>
       );
     }
   },
