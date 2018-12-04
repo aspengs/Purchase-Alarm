@@ -6,7 +6,7 @@ export const promoFormProps = {
   name: "Promo",
   name_plural: "Promos",
   list_display: ["_id", "promo"],
-  list_display_links: ["promo"],
+  list_display_links: ["_id"],
   list_per_page: 10,
   get_form(object = null) {
     let schema = {

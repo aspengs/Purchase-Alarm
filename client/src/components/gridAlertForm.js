@@ -43,21 +43,19 @@ export default class GridAlertForm extends Admin {
         <div className="pagination paginationGarba">
           {this.render_pagination()}
         </div>
-        
       </div>
     );
   }
   render_change_page() {
     return (
       <div className="row">
-      <div className="box-button-edit text-right">
-        {this.render_below_change_view()}
-      </div>
-      <div className="form-box">
-        {this.render_above_change_view()}
-        {this.render_change_view()}
-     
-      </div>
+        <div className="box-button-edit text-right">
+          {this.render_below_change_view()}
+        </div>
+        <div className="form-box">
+          {this.render_above_change_view()}
+          {this.render_change_view()}
+        </div>
       </div>
     );
   }
@@ -65,7 +63,8 @@ export default class GridAlertForm extends Admin {
     return (
       <button
         onClick={this.onClickDelete.bind(this, this.state.selected_objects)}
-        className="ra-add-button">
+        className="ra-add-button"
+      >
         Delete Brand
       </button>
     );

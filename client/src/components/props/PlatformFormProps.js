@@ -6,7 +6,7 @@ export const platformFormProps = {
   name: "Platform",
   name_plural: "Platforms",
   list_display: ["_id", "platform"],
-  list_display_links: ["platform"],
+  list_display_links: ["_id"],
   list_per_page: 10,
   get_form(object = null) {
     let schema = {

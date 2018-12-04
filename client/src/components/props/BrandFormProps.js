@@ -6,7 +6,7 @@ export const brandFormProps = {
   name: "Brand",
   name_plural: "Brands",
   list_display: ["_id", "brand"],
-  list_display_links: ["brand"],
+  list_display_links: ["_id"],
   list_per_page: 10,
   get_form(object = null) {
     let schema = {

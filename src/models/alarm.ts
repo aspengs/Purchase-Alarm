@@ -72,10 +72,6 @@ const AlarmSchema = new Schema({
   }
 });
 
-function getCurrentCalendarHour() {
-  let now = new Date();
-}
-
 AlarmSchema.plugin(require("mongoose-paginate"));
 
 export default mongoose.model("Alarm", AlarmSchema);

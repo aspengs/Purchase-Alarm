@@ -73,14 +73,58 @@ export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
             alarmElement.platform.toUpperCase() == dataElement.sale_platform &&
             alarmElement.brand.toUpperCase() == dataElement.brand
           ) {
-            // if(){
-
-            // }
-            console.log(dataElement);
-            return dataElement;
+            if (
+              getCurrentTolerance(alarmElement) <
+              dataElement.minutesFromLastTransaction
+            ) {
+              var message = console.log(dataElement);
+              // var bot = new Bot();
+              // bot.sendMessage(check.getMessage(), check.getDestinationChatID());
+              return dataElement;
+            }
           }
         });
-        console.log(alarmMatch);
       });
     });
 });
+function getmessage(alarmElement: any) {
+  // return "No hay ventas en "+ alarmElement.brand+" con medio de pago "Visa Generica" (2261) desde hace al menos {{minutos}} minutos."
+}
+
+function getCurrentTolerance(alarmElement: any) {
+  let myDays = ["dom", "lun", "mar", "mie", "jue", "vie", "sab", "dom"];
+  let now = new Date();
+  var hour = now.getHours();
+  return alarmElement.calendar[myDays[now.getDay()]][
+    "A" + (now.getHours() + 1)
+  ];
+}
+
+function Bot(token: any, update: any) {
+  this.token = token;
+  this.update = update;
+  this.handlers = [];
+}
+
+Bot.sendMessage = function(message: string, chatID: string) {
+  //Logger.log(message);
+
+  var payload = {
+    method: "sendMessage",
+    chat_id: chatID,
+    text: message,
+    parse_mode: "HTML"
+  };
+
+  var data = {
+    method: "post",
+    payload: payload
+  };
+
+  fetch(
+    "https://api.telegram.org/bot" +
+      "655824168:AAH78FIQFcwHzOJmP6PDXimwqpBzctoYRkw" +
+      "/",
+    data
+  );
+};

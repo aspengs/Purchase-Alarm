@@ -6,7 +6,7 @@ export const sourceFormProps = {
   name: "Source",
   name_plural: "Sources",
   list_display: ["_id", "source"],
-  list_display_links: ["source"],
+  list_display_links: ["_id"],
   list_per_page: 10,
   get_form(object = null) {
     let schema = {
