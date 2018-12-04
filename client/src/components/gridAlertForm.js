@@ -1,8 +1,9 @@
 import React from "react";
 import Admin from "react-crud-admin";
 import "../../node_modules/react-crud-admin/public/main.css";
+import Table from "./table";
 
-export default class AdminForm extends Admin {
+export default class GridAlertForm extends Admin {
   constructor(props) {
     super(props);
     this.name = props.custom.name;
@@ -55,7 +56,7 @@ export default class AdminForm extends Admin {
       <div className="form-box">
         {this.render_above_change_view()}
         {this.render_change_view()}
-       
+     
       </div>
       </div>
     );

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdminForm from "./components/adminForm";
+import GridAlertForm from "./components/gridAlertForm";
 import { brandFormProps } from "./components/props/BrandFormProps";
 import { platformFormProps } from "./components/props/PlatformFormProps";
 import { sourceFormProps } from "./components/props/SourceFormProps";
@@ -18,56 +20,29 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-2 d-none d-md-block bg-light sidebarGarba text-left">
-              <NavBar />
-            </div>
-            <div className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-              <InfoFilter />
-              <Table />
+         <Router>
+           <div>
+            <Header/>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-md-2 d-none d-md-block bg-light sidebarGarba text-left">
+                  <NavBar />
+                </div>
+                <div className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 dashboardGarba">
+                  <Route exact path="/" component={()=> <GridAlertForm custom={alarmFormProps}/> } /> 
+                  <Route exact path="/brand" component={()=> <AdminForm custom={brandFormProps}/> } /> 
+                  <Route exact path="/platform" component={()=> <AdminForm custom={platformFormProps}/> } />  
+                  <Route exact path="/source" component={()=> <AdminForm custom={sourceFormProps}/> } /> 
+                  <Route exact path="/promo" component={()=> <AdminForm custom={promoFormProps}/> } />  
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <header className="App-header">
-          <AdminForm custom={brandFormProps} />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <AdminForm custom={platformFormProps} />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <AdminForm custom={sourceFormProps} />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <AdminForm custom={promoFormProps} />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <AdminForm custom={alarmFormProps} />
-        </header>
+        </Router>
       </div>
     );
   }
+  
 }
+
 export default App;

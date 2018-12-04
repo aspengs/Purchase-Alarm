@@ -1,24 +1,7 @@
 body {
-  background-color: #fbfbfd;
+  background-color: #fbfbfd!important;
 }
 
-
-.App-header {
-  min-height: 50%;
-  padding-bottom: 10px;
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 /**/
 .headerGarba {
@@ -29,15 +12,15 @@ body {
 }
 .headerGarba .navbar{
   padding: 1.4rem 1rem;
+  margin-bottom: 0;
 }
-.sidebarGarba {
+.App .sidebarGarba {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 100;
   padding: 0;
-
 }
 .sidebar-sticky-garba {
   position: sticky;
@@ -52,6 +35,9 @@ body {
 .sidebar-sticky-garba  form{
   padding-left: 10px;
   padding-right: 10px;
+}
+.App  {
+  background-color: #fbfbfd;
 }
 /*sidebar-sticky-garba*/
 .sidebar-sticky-garba .nav-garba {
@@ -85,7 +71,7 @@ body {
   box-shadow: 0px 0px #8a180c;
   background: #8a180c;
 }
-.tableGarba {
+.tableGarba,.form-box {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
@@ -119,4 +105,42 @@ body {
   color: #666;
   margin-left: 5px;
   display: inline-block;
+}
+
+/*ALERT FORM**/
+.box-button-edit,.addDeleteButton {
+  width: 100%;
+  border-bottom: 1px solid #f5f5f5;
+  margin-bottom: 30px;
+
+}
+.form-box {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-box .form-control {
+  box-shadow: none;
+  height: 45px;
+}
+.form-box .label {
+  color: #999;
+  font-weight: 500;
+}
+
+.tableAlert {
+  margin: 0 auto;
+  min-width: 1350px;
+}
+
+.paginationGarba {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+.paginationGarba .pull-right{
+  clear: both!important;
+  width: 100%;
 }
