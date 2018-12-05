@@ -40,8 +40,12 @@ jobs:
               echo "Another Branch"
             fi
       - run:
-          name: Deploy Server
-          command: mkdir -pv /tmp/release
+          name: Start Deploy Server
+          command: cd ~/garbarino-com/checkout-alarms
+      - run: rm -rf node_modules
+      - run: yarn --ignore-engines
+      - run: tsc
+      - run: mkdir -pv /tmp/release
       - run: cp -r `ls | grep -v "^statics" | grep -v "^node_modules" | grep -v "^client"` /tmp/release
       - run: aws s3 cp s3://garbarino-deploy-scripts/deploy_ecs.sh /tmp/release/deploy_ecs.sh
       - run: chmod +x /tmp/release/deploy_ecs.sh
