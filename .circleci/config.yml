@@ -34,6 +34,7 @@ jobs:
           name: Deploy client
           command: |
             cd client
+            chmod +x deploy.sh
             if [ "$CIRCLE_BRANCH" == "master" ]; then
               ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
             else
