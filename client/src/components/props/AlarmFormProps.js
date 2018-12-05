@@ -240,15 +240,19 @@ export const alarmFormProps = {
       }
     };
     if (!object) {
-      return <div className="calendarTable"><Form schema={schema} onSubmit={this.form_submit.bind(this)} /></div>;
+      return (
+        <div className="calendarTable">
+          <Form schema={schema} onSubmit={this.form_submit.bind(this)} />
+        </div>
+      );
     } else {
       return (
         <div className="calendarTable">
-        <Form
-          schema={schema}
-          formData={object}
-          onSubmit={this.form_submit.bind(this)}
-        />
+          <Form
+            schema={schema}
+            formData={object}
+            onSubmit={this.form_submit.bind(this)}
+          />
         </div>
       );
     }

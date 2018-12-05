@@ -43,13 +43,13 @@ export const platformFormProps = {
   },
 
   form_submit(form) {
-    let brand = form.formData;
+    let platform = form.formData;
     if (form.edit) {
-      alarmSDK.updatePlatform(brand._id, brand);
+      alarmSDK.updatePlatform(platform._id, platform);
       this.response_change();
     } else {
-      alarmSDK.createPlatform(brand);
-      this.state.queryset.push(brand);
+      alarmSDK.createPlatform(platform);
+      this.state.queryset.push(platform);
       this.response_add();
     }
   },
