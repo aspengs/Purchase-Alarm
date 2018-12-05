@@ -9,7 +9,7 @@ import path = require("path");
 
 export class Routes {
   public routes(app: any): void {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === "dev-prod") {
       // Serve any static files
       app.use(express.static(path.join(__dirname, "../../client/build")));
       // Handle React routing, return all requests to React app
@@ -19,56 +19,56 @@ export class Routes {
     }
 
     app
-      .route("/alarm")
+      .route("/api/alarm")
       .get(alarmController.getAlarms)
       .post(alarmController.addNewAlarm);
 
     app
-      .route("/alarm/:alarmId")
+      .route("/api/alarm/:alarmId")
       .get(alarmController.getAlarmWithID)
       .put(alarmController.updateAlarm)
       .delete(alarmController.deleteAlarm);
 
     app
-      .route("/brand")
+      .route("/api/brand")
       .get(brandController.getBrands)
       .post(brandController.addNewBrand);
 
     app
-      .route("/brand/:brandId")
+      .route("/api/brand/:brandId")
       .get(brandController.getBrandWithID)
       .put(brandController.updateBrand)
       .delete(brandController.deleteBrand);
 
     app
-      .route("/platform")
+      .route("/api/platform")
       .get(platformController.getPlatforms)
       .post(platformController.addNewPlatform);
 
     app
-      .route("/platform/:platformId")
+      .route("/api/platform/:platformId")
       .get(platformController.getPlatformWithID)
       .put(platformController.updatePlatform)
       .delete(platformController.deletePlatform);
 
     app
-      .route("/source")
+      .route("/api/source")
       .get(sourceController.getSources)
       .post(sourceController.addNewSource);
 
     app
-      .route("/source/:sourceId")
+      .route("/api/source/:sourceId")
       .get(sourceController.getSourceWithID)
       .put(sourceController.updateSource)
       .delete(sourceController.deleteSource);
 
     app
-      .route("/promo")
+      .route("/api/promo")
       .get(promoController.getPromos)
       .post(promoController.addNewPromo);
 
     app
-      .route("/promo/:promoId")
+      .route("/api/promo/:promoId")
       .get(promoController.getPromoWithID)
       .put(promoController.updatePromo)
       .delete(promoController.deletePromo);
