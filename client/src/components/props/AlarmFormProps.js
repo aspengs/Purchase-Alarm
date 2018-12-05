@@ -1,6 +1,7 @@
 import React from "react";
 import * as alarmSDK from "../../services/alarmSDK";
 import Form from "react-jsonschema-form";
+import { schema, prefilled } from "../../models/alarmModel";
 
 export const alarmFormProps = {
   name: "Alarm",
@@ -10,239 +11,14 @@ export const alarmFormProps = {
   list_per_page: 10,
 
   get_form(object = null) {
-    let schema = {
-      title: this.name,
-      type: "object",
-      required: ["brand"],
-      properties: {
-        _id: { type: "string", title: "id" },
-        brand: { type: "string", title: "brand", default: "" },
-        platform: { type: "string", title: "platform", default: "" },
-        promo: { type: "string", title: "promo", default: "" },
-        source: { type: "string", title: "source", default: "" },
-        chatID: { type: "string", title: "chat Id", default: "" },
-        calendar: {
-          type: "object",
-          title: "calendar",
-          properties: {
-            dom: {
-              type: "object",
-              title: "domingo",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            },
-            lun: {
-              type: "object",
-              title: "lunes",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            },
-            mar: {
-              type: "object",
-              title: "martes",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            },
-            mie: {
-              type: "object",
-              title: "miercoles",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            },
-            jue: {
-              type: "object",
-              title: "jueves",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            },
-            vie: {
-              type: "object",
-              title: "viernes",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            },
-            sab: {
-              type: "object",
-              title: "sabado",
-              properties: {
-                A1: { type: "number", title: "0a1" },
-                A2: { type: "number", title: "1a2" },
-                A3: { type: "number", title: "2a3" },
-                A4: { type: "number", title: "3a4" },
-                A5: { type: "number", title: "4a5" },
-                A6: { type: "number", title: "5a6" },
-                A7: { type: "number", title: "6a7" },
-                A8: { type: "number", title: "7a8" },
-                A9: { type: "number", title: "8a9" },
-                A10: { type: "number", title: "9a10" },
-                A11: { type: "number", title: "10a11" },
-                A12: { type: "number", title: "11a12" },
-                A13: { type: "number", title: "12a13" },
-                A14: { type: "number", title: "13a14" },
-                A15: { type: "number", title: "14a15" },
-                A16: { type: "number", title: "15a16" },
-                A17: { type: "number", title: "16a17" },
-                A18: { type: "number", title: "17a18" },
-                A19: { type: "number", title: "18a19" },
-                A20: { type: "number", title: "19a20" },
-                A21: { type: "number", title: "20a21" },
-                A22: { type: "number", title: "21a22" },
-                A23: { type: "number", title: "22a23" },
-                A24: { type: "number", title: "23a24" }
-              }
-            }
-          }
-        }
-      }
-    };
     if (!object) {
       return (
         <div className="calendarTable">
-          <Form schema={schema} onSubmit={this.form_submit.bind(this)} />
+          <Form
+            schema={schema}
+            formData={prefilled}
+            onSubmit={this.form_submit.bind(this)}
+          />
         </div>
       );
     } else {
@@ -270,13 +46,14 @@ export const alarmFormProps = {
   },
 
   form_submit(form) {
-    let brand = form.formData;
+    let alert = form.formData;
+    form.edit = form.formData._id === undefined ? false : true;
     if (form.edit) {
-      alarmSDK.updateAlarm(brand._id, brand);
+      alarmSDK.updateAlarm(alert._id, alert);
       this.response_change();
     } else {
-      alarmSDK.createAlarm(brand);
-      this.state.queryset.push(brand);
+      alarmSDK.createAlarm(alert);
+      this.state.queryset.push(alert);
       this.response_add();
     }
   },

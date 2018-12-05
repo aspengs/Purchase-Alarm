@@ -4,7 +4,7 @@ import { Routes } from "./routes/routes";
 import path = require("path");
 import morgan = require("morgan");
 import * as mongoose from "mongoose";
-import { purchaseCheck5Mins } from "./jobs/alarmJob";
+import { purchaseCheck1Min } from "./jobs/alarmJob";
 let config = require("../config/config");
 
 class App {
@@ -40,7 +40,7 @@ class App {
   }
 
   private startJob(): void {
-    this.job = purchaseCheck5Mins;
+    this.job = purchaseCheck1Min;
   }
 }
 

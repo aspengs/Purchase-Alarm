@@ -22,7 +22,7 @@ export default class GridAlertForm extends Admin {
       this.queryset
     );
   }
-  
+
   render_list_view() {
     return (
       <div className="AdminForm row">
@@ -61,7 +61,7 @@ export default class GridAlertForm extends Admin {
         onClick={this.onClickDelete.bind(this, this.state.selected_objects)}
         className="ra-add-button"
       >
-        Delete Brand
+        Delete {this.name}
       </button>
     );
   }
