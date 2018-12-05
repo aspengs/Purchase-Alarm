@@ -43,13 +43,13 @@ export const sourceFormProps = {
   },
 
   form_submit(form) {
-    let brand = form.formData;
+    let source = form.formData;
     if (form.edit) {
-      alarmSDK.updateSource(brand._id, brand);
+      alarmSDK.updateSource(source._id, source);
       this.response_change();
     } else {
-      alarmSDK.createSource(brand);
-      this.state.queryset.push(brand);
+      alarmSDK.createSource(source);
+      this.state.queryset.push(source);
       this.response_add();
     }
   },

@@ -30,10 +30,6 @@ export default class GridAlertForm extends Admin {
           {this.render_add_button()}
           {this.render_below_add_button()}
         </div>
-        {/* {this.render_search_field()}
-            {this.render_below_search_field()} */}
-        {/* {this.render_filters()}
-            {this.render_below_filters()} */}
         <div className="tableGarba tableAlert">
           {this.render_table()}
           {this.render_below_table()}
