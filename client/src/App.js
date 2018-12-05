@@ -15,7 +15,8 @@ import Table from "./components/table";
 
 class App extends Component {
   state = {};
-  componentDidMount() {}
+  componentDidMount() {
+  }
   handleSubmit = async e => {};
   render() {
     return (

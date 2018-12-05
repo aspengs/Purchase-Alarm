@@ -1,7 +1,6 @@
 import React from "react";
 import Admin from "react-crud-admin";
 import "../../node_modules/react-crud-admin/public/main.css";
-import Table from "./table";
 
 export default class GridAlertForm extends Admin {
   constructor(props) {
@@ -23,6 +22,7 @@ export default class GridAlertForm extends Admin {
       this.queryset
     );
   }
+  
   render_list_view() {
     return (
       <div className="AdminForm row">
