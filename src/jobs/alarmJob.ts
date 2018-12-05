@@ -1,22 +1,22 @@
-let schedule = require("node-schedule");
-const fetch = require("node-fetch");
-const TelegramBot = require("node-telegram-bot-api");
-
 import Brand from "../models/alarmBrand";
 import Promo from "../models/alarmPromo";
 import Platfrom from "../models/alarmPlatform";
 import Source from "../models/alarmSource";
 import Alarm from "../models/alarm";
+const fetch = require("node-fetch");
+const TelegramBot = require("node-telegram-bot-api");
+let schedule = require("node-schedule");
+let config = require("../../config/config");
 
-const token = "655824168:AAH78FIQFcwHzOJmP6PDXimwqpBzctoYRkw";
+const token = config.services.telegram_bot.token;
 const bot = new TelegramBot(token, { polling: true });
 
-export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
+export let purchaseCheck1Min = schedule.scheduleJob("*/1 * * * *", function() {
   console.log("Check runs every 1 minutes");
   var now = new Date();
   var options = {
     headers: {
-      apikey: "2d3d3655bf6aa36615e3ea79d605e728b8bc379a"
+      apikey: config.services.checkout.monitor.api_key
     }
   };
   var brands = {};
@@ -57,7 +57,7 @@ export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
     alarms = data;
   });
 
-  fetch("http://api.garbarino.com/payments/monitor.php", options)
+  fetch(config.services.checkout.monitor.url, options)
     .then((Response: any) => Response.json())
     .then((data: any) => {
       data.forEach((transaction: any) => {
@@ -94,13 +94,15 @@ export let purchaseCheck5Mins = schedule.scheduleJob("*/1 * * * *", function() {
 });
 function getmessage(alarmElement: any, since: number) {
   return (
-    "[TEST] No hay ventas en " +
+    "No hay ventas en " +
     alarmElement.brand +
-    " con medio de pago " +
+    " con el medio de pago " +
     alarmElement.promo +
+    " para la plataforma " +
+    alarmElement.platform +
     " desde hace al menos " +
     since +
-    " minutos."
+    " minuto/s."
   );
 }
 
