@@ -22,6 +22,7 @@ export default class GridAlertForm extends Admin {
       this.queryset
     );
   }
+  
   render_list_view() {
     return (
       <div className="AdminForm row">

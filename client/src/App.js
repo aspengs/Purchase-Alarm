@@ -13,7 +13,8 @@ import NavBar from "./components/navBar";
 
 class App extends Component {
   state = {};
-  componentDidMount() {}
+  componentDidMount() {
+  }
   handleSubmit = async e => {};
   render() {
     return (
