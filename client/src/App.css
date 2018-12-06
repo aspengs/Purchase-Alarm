@@ -1,8 +1,9 @@
 body {
-  background-color: #fbfbfd!important;
+  background-color: #fbfbfd !important;
 }
 
-#root__id,label[for="root__id"] {
+#root__id,
+label[for="root__id"] {
   display: none;
 }
 /**/
@@ -12,7 +13,7 @@ body {
   top: 0;
   z-index: 1020;
 }
-.headerGarba .navbar{
+.headerGarba .navbar {
   padding: 1.4rem 1rem;
   margin-bottom: 0;
 }
@@ -32,13 +33,13 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #2b2f50;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
-.sidebar-sticky-garba  form{
+.sidebar-sticky-garba form {
   padding-left: 10px;
   padding-right: 10px;
 }
-.App  {
+.App {
   background-color: #fbfbfd;
 }
 /*sidebar-sticky-garba*/
@@ -56,51 +57,50 @@ body {
   padding: 13px 13px 13px 8px;
 }
 .sidebar-sticky-garba .nav-garba li:last-child:hover {
-  background-color:inherit;
+  background-color: inherit;
   border-left: 2px solid #2b2f50;
 }
 .sidebar-sticky-garba .nav-garba li:hover {
-  border-left: 2px solid #03A9F4;
+  border-left: 2px solid #03a9f4;
   background-color: rgb(49, 53, 88);
 }
 
-
-
 .btn-alert-submit {
   width: 100%;
-  background-color: #D1030F;
+  background-color: #d1030f;
   box-shadow: 0px 2px #8a180c;
   padding: 10px 12px;
   color: #fff;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .btn-alert-submit:hover {
   box-shadow: 0px 0px #8a180c;
   background: #8a180c;
 }
-.tableGarba,.form-box {
+.tableGarba,
+.form-box {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
-  -webkit-box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
-  -moz-box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
+  -webkit-box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.23);
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.23);
   margin-top: 30px;
 }
 
 .tableGarba .table thead th {
   border: 0;
-  padding: 1.95rem .75rem;
+  padding: 1.95rem 0.75rem;
 }
 .tableGarba .table td,
-.tableGarba .table tr th{
+.tableGarba .table tr th {
   color: #666;
 }
-.infoFilter{
+.infoFilter {
   padding-left: 0;
   margin-top: 23px;
 }
-.infoFilter li{
+.infoFilter li {
   list-style: none;
   display: inline-block;
   margin-right: 25px;
@@ -115,11 +115,11 @@ body {
 }
 
 /*ALERT FORM**/
-.box-button-edit,.addDeleteButton {
+.box-button-edit,
+.addDeleteButton {
   width: 100%;
   border-bottom: 1px solid #f5f5f5;
   margin-bottom: 30px;
-
 }
 .form-box {
   width: 750px;
@@ -138,7 +138,8 @@ body {
 
 .tableAlert {
   margin: 0 auto;
-  min-width: 1350px;
+  max-width: 1105px;
+  min-width: 1070px;
 }
 
 .paginationGarba {
@@ -147,15 +148,15 @@ body {
   text-align: center;
   margin-top: 30px;
 }
-.paginationGarba .pull-right{
-  clear: both!important;
+.paginationGarba .pull-right {
+  clear: both !important;
   width: 100%;
 }
 
 #root__title ~ .field-string {
   display: inline-block;
 }
-#root__title ~ .field-string>input{
+#root__title ~ .field-string > input {
   width: 100px;
   margin-right: 10px;
 }
@@ -163,7 +164,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.23);
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.23);
   max-width: 702px;
 }
 #root_calendar__title {
@@ -221,7 +222,6 @@ body {
 }
 .calendarTable .field-number {
   display: inline-block;
-
 }
 
 label[for="root_calendar_dom_A1"],
@@ -247,7 +247,7 @@ label[for="root_calendar_dom_A20"],
 label[for="root_calendar_dom_A21"],
 label[for="root_calendar_dom_A22"],
 label[for="root_calendar_dom_A23"],
-label[for="root_calendar_dom_A24"]{
+label[for="root_calendar_dom_A24"] {
   display: block;
   position: absolute;
   top: 17%;
@@ -258,180 +258,149 @@ label[for="root_calendar_dom_A24"]{
   left: -60px;
 }
 
-
-
-
 label[for="root_calendar_lun_A1"],
 label[for="root_calendar_mar_A1"],
 label[for="root_calendar_mie_A1"],
 label[for="root_calendar_jue_A1"],
 label[for="root_calendar_vie_A1"],
 label[for="root_calendar_sab_A1"],
-
 label[for="root_calendar_lun_A2"],
 label[for="root_calendar_mar_A2"],
 label[for="root_calendar_mie_A2"],
 label[for="root_calendar_jue_A2"],
 label[for="root_calendar_vie_A2"],
 label[for="root_calendar_sab_A2"],
-
 label[for="root_calendar_lun_A3"],
 label[for="root_calendar_mar_A3"],
 label[for="root_calendar_mie_A3"],
 label[for="root_calendar_jue_A3"],
 label[for="root_calendar_vie_A3"],
 label[for="root_calendar_sab_A3"],
-
 label[for="root_calendar_lun_A4"],
 label[for="root_calendar_mar_A4"],
 label[for="root_calendar_mie_A4"],
 label[for="root_calendar_jue_A4"],
 label[for="root_calendar_vie_A4"],
 label[for="root_calendar_sab_A4"],
-
 label[for="root_calendar_lun_A5"],
 label[for="root_calendar_mar_A5"],
 label[for="root_calendar_mie_A5"],
 label[for="root_calendar_jue_A5"],
 label[for="root_calendar_vie_A5"],
 label[for="root_calendar_sab_A5"],
-
 label[for="root_calendar_lun_A6"],
 label[for="root_calendar_mar_A6"],
 label[for="root_calendar_mie_A6"],
 label[for="root_calendar_jue_A6"],
 label[for="root_calendar_vie_A6"],
 label[for="root_calendar_sab_A6"],
-
 label[for="root_calendar_lun_A7"],
 label[for="root_calendar_mar_A7"],
 label[for="root_calendar_mie_A7"],
 label[for="root_calendar_jue_A7"],
 label[for="root_calendar_vie_A7"],
 label[for="root_calendar_sab_A7"],
-
-
 label[for="root_calendar_lun_A8"],
 label[for="root_calendar_mar_A8"],
 label[for="root_calendar_mie_A8"],
 label[for="root_calendar_jue_A8"],
 label[for="root_calendar_vie_A8"],
 label[for="root_calendar_sab_A8"],
-
 label[for="root_calendar_lun_A9"],
 label[for="root_calendar_mar_A9"],
 label[for="root_calendar_mie_A9"],
 label[for="root_calendar_jue_A9"],
 label[for="root_calendar_vie_A9"],
 label[for="root_calendar_sab_A9"],
-
 label[for="root_calendar_lun_A10"],
 label[for="root_calendar_mar_A10"],
 label[for="root_calendar_mie_A10"],
 label[for="root_calendar_jue_A10"],
 label[for="root_calendar_vie_A10"],
 label[for="root_calendar_sab_A10"],
-
-
 label[for="root_calendar_lun_A11"],
 label[for="root_calendar_mar_A11"],
 label[for="root_calendar_mie_A11"],
 label[for="root_calendar_jue_A11"],
 label[for="root_calendar_vie_A11"],
 label[for="root_calendar_sab_A11"],
-
 label[for="root_calendar_lun_A12"],
 label[for="root_calendar_mar_A12"],
 label[for="root_calendar_mie_A12"],
 label[for="root_calendar_jue_A12"],
 label[for="root_calendar_vie_A12"],
 label[for="root_calendar_sab_A12"],
-
 label[for="root_calendar_lun_A13"],
 label[for="root_calendar_mar_A13"],
 label[for="root_calendar_mie_A13"],
 label[for="root_calendar_jue_A13"],
 label[for="root_calendar_vie_A13"],
 label[for="root_calendar_sab_A13"],
-
-
 label[for="root_calendar_lun_A14"],
 label[for="root_calendar_mar_A14"],
 label[for="root_calendar_mie_A14"],
 label[for="root_calendar_jue_A14"],
 label[for="root_calendar_vie_A14"],
 label[for="root_calendar_sab_A14"],
-
 label[for="root_calendar_lun_A15"],
 label[for="root_calendar_mar_A15"],
 label[for="root_calendar_mie_A15"],
 label[for="root_calendar_jue_A15"],
 label[for="root_calendar_vie_A15"],
 label[for="root_calendar_sab_A15"],
-
 label[for="root_calendar_lun_A16"],
 label[for="root_calendar_mar_A16"],
 label[for="root_calendar_mie_A16"],
 label[for="root_calendar_jue_A16"],
 label[for="root_calendar_vie_A16"],
 label[for="root_calendar_sab_A16"],
-
 label[for="root_calendar_lun_A17"],
 label[for="root_calendar_mar_A17"],
 label[for="root_calendar_mie_A17"],
 label[for="root_calendar_jue_A17"],
 label[for="root_calendar_vie_A17"],
 label[for="root_calendar_sab_A17"],
-
 label[for="root_calendar_lun_A18"],
 label[for="root_calendar_mar_A18"],
 label[for="root_calendar_mie_A18"],
 label[for="root_calendar_jue_A18"],
 label[for="root_calendar_vie_A18"],
 label[for="root_calendar_sab_A18"],
-
 label[for="root_calendar_lun_A19"],
 label[for="root_calendar_mar_A19"],
 label[for="root_calendar_mie_A19"],
 label[for="root_calendar_jue_A19"],
 label[for="root_calendar_vie_A19"],
 label[for="root_calendar_sab_A19"],
-
 label[for="root_calendar_lun_A20"],
 label[for="root_calendar_mar_A20"],
 label[for="root_calendar_mie_A20"],
 label[for="root_calendar_jue_A20"],
 label[for="root_calendar_vie_A20"],
 label[for="root_calendar_sab_A20"],
-
 label[for="root_calendar_lun_A21"],
 label[for="root_calendar_mar_A21"],
 label[for="root_calendar_mie_A21"],
 label[for="root_calendar_jue_A21"],
 label[for="root_calendar_vie_A21"],
 label[for="root_calendar_sab_A21"],
-
 label[for="root_calendar_lun_A22"],
 label[for="root_calendar_mar_A22"],
 label[for="root_calendar_mie_A22"],
 label[for="root_calendar_jue_A22"],
 label[for="root_calendar_vie_A22"],
 label[for="root_calendar_sab_A22"],
-
 label[for="root_calendar_lun_A23"],
 label[for="root_calendar_mar_A23"],
 label[for="root_calendar_mie_A23"],
 label[for="root_calendar_jue_A23"],
 label[for="root_calendar_vie_A23"],
 label[for="root_calendar_sab_A23"],
-
 label[for="root_calendar_lun_A24"],
 label[for="root_calendar_mar_A24"],
 label[for="root_calendar_mie_A24"],
 label[for="root_calendar_jue_A24"],
 label[for="root_calendar_vie_A24"],
-label[for="root_calendar_sab_A24"]{
+label[for="root_calendar_sab_A24"] {
   display: none;
 }
-
-
