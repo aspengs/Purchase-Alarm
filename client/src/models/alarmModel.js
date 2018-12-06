@@ -1,7 +1,7 @@
 export let schema = {
   title: "Alarm",
   type: "object",
-  required: ["brand"],
+  required: ["brand", "platform", "promo", "source", "chatID"],
   properties: {
     _id: { type: "string", title: "id" },
     brand: { type: "string", title: "brand", default: "" },

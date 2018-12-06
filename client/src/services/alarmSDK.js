@@ -8,11 +8,17 @@ export async function createAlarm(item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function getAlarm(limit, page) {
   return await fetch("/api/alarm?limit=" + limit + "&page=" + page)
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function deleteAlarm(item) {
@@ -20,6 +26,9 @@ export async function deleteAlarm(item) {
     method: "delete"
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function updateAlarm(id, item) {
@@ -31,6 +40,9 @@ export async function updateAlarm(id, item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 //BRAND
@@ -43,11 +55,20 @@ export async function createBrand(item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function getBrand(limit, page) {
   return await fetch("/api/brand?limit=" + limit + "&page=" + page)
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function deleteBrand(item) {
@@ -55,6 +76,9 @@ export async function deleteBrand(item) {
     method: "delete"
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function updateBrand(id, item) {
@@ -66,6 +90,9 @@ export async function updateBrand(id, item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 //Platform
@@ -78,11 +105,17 @@ export async function createPlatform(item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function getPlatform(limit, page) {
   return await fetch("/api/platform?limit=" + limit + "&page=" + page)
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function deletePlatform(item) {
@@ -90,6 +123,9 @@ export async function deletePlatform(item) {
     method: "delete"
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function updatePlatform(id, item) {
@@ -101,6 +137,9 @@ export async function updatePlatform(id, item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 //Source
@@ -113,11 +152,17 @@ export async function createSource(item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function getSource(limit, page) {
   return await fetch("/api/source?limit=" + limit + "&page=" + page)
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function deleteSource(item) {
@@ -125,6 +170,9 @@ export async function deleteSource(item) {
     method: "delete"
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function updateSource(id, item) {
@@ -136,6 +184,9 @@ export async function updateSource(id, item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 //PROMO
@@ -148,11 +199,17 @@ export async function createPromo(item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function getPromo(limit, page) {
   return await fetch("/api/promo?limit=" + limit + "&page=" + page)
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function deletePromo(item) {
@@ -160,6 +217,9 @@ export async function deletePromo(item) {
     method: "delete"
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
 export async function updatePromo(id, item) {
@@ -171,5 +231,8 @@ export async function updatePromo(id, item) {
     }
   })
     .then(response => response.json())
+    .catch(function() {
+      console.log("server Error");
+    })
     .then(data => data);
 }
