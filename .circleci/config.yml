@@ -79,6 +79,8 @@ jobs:
             ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
 
   deploy_server:
+    machine: true
+    
     working_directory: ~/repo
 
     environment:
