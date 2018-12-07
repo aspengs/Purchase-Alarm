@@ -31,10 +31,11 @@ jobs:
       - run:
           name: Install Dependencies
           command: yarn install
-      - run: cd client
-      - run: yarn install
-      - run: cd ~/repo
-      - save_cache:
+      - run:
+          name: Install Client Dependencies
+          command: cd client && yarn install
+
+          - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
@@ -50,11 +51,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - run: cd client
       - run:
           name: Build TypeScript code
-          command: yarn build
-      - run: cd ~/repo
+          command: cd client && yarn build
 
       - persist_to_workspace:
           root: ~/repo
@@ -69,11 +68,11 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install awscli
-      - run: cd client
       - run:
           name: Deploy client
           command: |
             cd client
+            chmod +x deploy.sh
             if [ "$CIRCLE_BRANCH" == "master" ]; then
               ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
             else
