@@ -77,6 +77,39 @@ jobs:
             cd client
             chmod +x deploy.sh
             ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
+
+  deploy_server:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Install aws dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install awscli
+      - run:
+          name: Get ENVIRONMENT_NAME
+          command: |
+            if [ "$CIRCLE_BRANCH" == "master" ]; then
+            echo 'export ENVIRONMENT_NAME=staging' >> $BASH_ENV
+            else
+            echo 'export ENVIRONMENT_NAME=ci' >> $BASH_ENV
+            fi
+      - run:
+          name: Set Version
+          command: |
+            echo $CIRCLE_SHA1-$CIRCLE_BUILD_NUM > /tmp/version
+      - run: mkdir -pv /tmp/release
+      - run: cp -r `ls | grep -v "^statics" | grep -v "^node_modules" | grep -v "^client"` /tmp/release
+      - run: aws s3 cp s3://garbarino-deploy-scripts/deploy_ecs.sh /tmp/release/deploy_ecs.sh
+      - run: chmod +x /tmp/release/deploy_ecs.sh
+      - run:
+          name: Deploy Server
+          command: /tmp/release/deploy_ecs.sh $ENVIRONMENT_NAME $ARTIFACT_NAME
+          
 workflows:
   version: 2
 
