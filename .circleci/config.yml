@@ -109,7 +109,7 @@ jobs:
       - run:
           name: Deploy Server
           command: /tmp/release/deploy_ecs.sh $ENVIRONMENT_NAME $ARTIFACT_NAME
-          
+
 workflows:
   version: 2
 
@@ -117,6 +117,9 @@ workflows:
     jobs:
       - checkout
       - build_client:
+          requires:
+            - checkout
+      - deploy_server:
           requires:
             - checkout
   release:
