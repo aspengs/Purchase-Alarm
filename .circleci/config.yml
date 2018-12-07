@@ -79,8 +79,8 @@ jobs:
             ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
 
   deploy_server:
-    <<: *defaults
-    
+    working_directory: ~/repo
+
     environment:
       ARTIFACT_NAME: checkout-alarms
       AWS_DEFAULT_REGION: "us-east-1"
