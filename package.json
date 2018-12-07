@@ -6,7 +6,7 @@
     "start-dev": "NODE_ENV=development supervisor dist/server.js",
     "start-ci": "NODE_ENV=ci node node dist/server.js",
     "start-staging": "NODE_ENV=staging node dist/server.js",
-    "start-prod": "NODE_ENV=prod node node dist/server.js",
+    "start-prod": "NODE_ENV=prod node dist/server.js",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon dist/server.js",
     "client": "cd client && yarn start",
