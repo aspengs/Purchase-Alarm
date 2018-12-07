@@ -58,6 +58,21 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           <<: *whitelist
+  
+  build_server:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Build TypeScript code
+          command: yarn tsc
+
+      - persist_to_workspace:
+          root: ~/repo
+          <<: *whitelist
 
   deploy_client:
     <<: *defaults
@@ -128,9 +143,12 @@ workflows:
       - build_client:
           requires:
             - checkout
-      - deploy_server:
+      - build_server:
           requires:
             - checkout
+      - deploy_server:
+          requires:
+            - build_server
   release:
     jobs:
       - checkout:
