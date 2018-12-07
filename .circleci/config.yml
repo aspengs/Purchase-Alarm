@@ -80,6 +80,10 @@ jobs:
 
   deploy_server:
     <<: *defaults
+    
+    environment:
+      ARTIFACT_NAME: checkout-alarms
+      AWS_DEFAULT_REGION: "us-east-1"
 
     steps:
       - attach_workspace:
