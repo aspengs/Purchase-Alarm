@@ -2,7 +2,6 @@
   "name": "purchase-alarm",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd client && yarn start",
     "start": "node dist/server.js",
     "start-dev": "NODE_ENV=development supervisor dist/server.js",
     "start-ci": "NODE_ENV=ci node node dist/server.js",
@@ -10,9 +9,11 @@
     "start-prod": "NODE_ENV=prod node node dist/server.js",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon dist/server.js",
-    "Xheroku-postbuild": "tsc && cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "heroku-postbuild": "tsc && cd client && npm install --no-shrinkwrap && npm run build",
-    "dev": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn watch-node\" \"yarn client\""
+    "client": "cd client && yarn start",
+    "server": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn watch-node\"",
+    "heroku-postbuild": "tsc && cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn watch-node\" \"yarn client\"",
+    "temp": "concurrently --kill-others-on-fail \"yarn run watch-ts\" \"yarn client\""
   },
   "dependencies": {
     "@types/express": "^4.16.0",
@@ -31,6 +32,7 @@
     "typescript": "^3.1.6"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.18.7"
   }
 }

@@ -9,7 +9,7 @@ class CartController {
       if (err) {
         res.send(err);
       }
-      res.json(alarm);
+      res.json({ alarm });
     });
   }
 
