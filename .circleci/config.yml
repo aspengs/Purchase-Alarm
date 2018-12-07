@@ -65,7 +65,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-          
+
       - run:
           name: Install aws dependencies
           command: |
@@ -76,11 +76,7 @@ jobs:
           command: |
             cd client
             chmod +x deploy.sh
-            if [ "$CIRCLE_BRANCH" == "master" ]; then
-              ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
-            else
-              echo "Another Branch"
-            fi
+            ./deploy.sh checkout-alarms-staging.garbarino.com E2TQ3NHJMCOJXP
 workflows:
   version: 2
 
