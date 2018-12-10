@@ -40,7 +40,7 @@ class App {
   }
 
   private startJob(): void {
-    // this.job = purchaseCheck1Min;
+    this.job = purchaseCheck1Min;
   }
 }
 
