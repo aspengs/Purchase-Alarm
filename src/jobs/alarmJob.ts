@@ -1,7 +1,3 @@
-import Brand from "../models/alarmBrand";
-import Promo from "../models/alarmPromo";
-import Platfrom from "../models/alarmPlatform";
-import Source from "../models/alarmSource";
 import Alarm from "../models/alarm";
 const fetch = require("node-fetch");
 const TelegramBot = require("node-telegram-bot-api");
@@ -19,36 +15,7 @@ export let purchaseCheck1Min = schedule.scheduleJob("*/1 * * * *", function() {
       apikey: config.services.checkout.monitor.api_key
     }
   };
-  var brands = {};
-  Brand.find({}, (err: any, data: any) => {
-    if (err) {
-      console.log(err);
-    }
-    brands = data;
-  });
 
-  var promos = {};
-  Promo.find({}, (err: any, data: any) => {
-    if (err) {
-      console.log(err);
-    }
-    promos = data;
-  });
-
-  var platforms = {};
-  Platfrom.find({}, (err: any, data: any) => {
-    if (err) {
-      console.log(err);
-    }
-    platforms = data;
-  });
-  var sources = {};
-  Source.find({}, (err: any, data: any) => {
-    if (err) {
-      console.log(err);
-    }
-    sources = data;
-  });
   var alarms: any[] = [];
   Alarm.find({}, (err: any, data: any) => {
     if (err) {

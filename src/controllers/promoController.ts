@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Promo from "../models/alarmPromo";
 
-class CartController {
+class PromoController {
   public addNewPromo(req: Request, res: Response) {
     let newPromo = new Promo(req.body);
 
@@ -65,4 +65,4 @@ class CartController {
     });
   }
 }
-export default new CartController();
+export default new PromoController();

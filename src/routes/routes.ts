@@ -18,11 +18,9 @@ export class Routes {
       });
     }
 
-    app
-      .route("/health")
-      .get(function(req: Request, res: Response) {
-        res.json({status: "ok"});
-      });
+    app.route("/health").get(function(req: Request, res: Response) {
+      res.json({ status: "ok" });
+    });
 
     app
       .route("/api/alarm")

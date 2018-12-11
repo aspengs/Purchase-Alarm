@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Source from "../models/alarmSource";
 
-class CartController {
+class SourceController {
   public addNewSource(req: Request, res: Response) {
     let newSource = new Source(req.body);
 
@@ -65,4 +65,4 @@ class CartController {
     });
   }
 }
-export default new CartController();
+export default new SourceController();

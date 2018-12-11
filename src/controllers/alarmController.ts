@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Alarm from "../models/alarm";
 
-class CartController {
+class AlarmController {
   public addNewAlarm(req: Request, res: Response) {
     let newAlarm = new Alarm(req.body);
 
@@ -65,4 +65,4 @@ class CartController {
     });
   }
 }
-export default new CartController();
+export default new AlarmController();

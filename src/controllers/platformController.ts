@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Platform from "../models/alarmPlatform";
 
-class CartController {
+class PlatformController {
   public addNewPlatform(req: Request, res: Response) {
     let newPlatform = new Platform(req.body);
 
@@ -65,4 +65,4 @@ class CartController {
     });
   }
 }
-export default new CartController();
+export default new PlatformController();

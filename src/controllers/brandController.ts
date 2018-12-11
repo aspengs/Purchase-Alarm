@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Brand from "../models/alarmBrand";
 
-class CartController {
+class BrandController {
   public addNewBrand(req: Request, res: Response) {
     let newBrand = new Brand(req.body);
 
@@ -65,4 +65,4 @@ class CartController {
     });
   }
 }
-export default new CartController();
+export default new BrandController();
